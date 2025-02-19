@@ -1,1 +1,1 @@
-# gameboy-emulator
+# Game Boy Emulator
