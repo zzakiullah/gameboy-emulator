@@ -19,12 +19,61 @@ static const instruction instructions[0x100] = {
 };
 
 instruction *get_instruction_from_opcode(uint8_t opcode) {
-    if (instructions[opcode].type == IT_NONE) {
-        return NULL;
-    }
     return &instructions[opcode];
 }
 
+char *instruction_lookup[] = {
+    "<NONE>",
+    "NOP",
+    "LD",
+    "INC",
+    "DEC",
+    "RLCA",
+    "ADD",
+    "RRCA",
+    "STOP",
+    "RLA",
+    "JR",
+    "RRA",
+    "DAA",
+    "CPL",
+    "SCF",
+    "CCF",
+    "HALT",
+    "ADC",
+    "SUB",
+    "SBC",
+    "AND",
+    "XOR",
+    "OR",
+    "CP",
+    "RET",
+    "POP",
+    "JP",
+    "CB",
+    "CALL",
+    "PUSH",
+    "RST",
+    "RETI",
+    "DI",
+    "EI",
+    "LDH",
+    "JPHL",
+    "ERR",
+    // CB instructions
+    "RLC",
+    "RRC",
+    "RL",
+    "RR",
+    "SLA",
+    "SRA",
+    "SWAP",
+    "SRL",
+    "BIT",
+    "RES",
+    "SET",
+};
+
 char *get_instruction_name(instruction_type t) {
-    
+    return instruction_lookup[t];
 }

@@ -14,7 +14,7 @@ uint16_t reverse(uint16_t n) {
     return ((n & 0xff00) >> 8) | ((n & 0x00ff) << 8);
 }
 
-uint16_t cpu_read_reg(register_type rt) {
+uint16_t cpu_read_register(register_type rt) {
     switch (rt) {
         case RT_A:  return ctx.registers.a;
         case RT_F:  return ctx.registers.f;

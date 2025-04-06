@@ -9,6 +9,9 @@
 #include "instructions.h"
 #include "emu.h"
 
+#define CPU_FLAG_Z BIT_GET(ctx->registers.f, 7)
+#define CPU_FLAG_C BIT_GET(ctx->registers.f, 4)
+
 typedef struct {
     uint8_t a;      // Accumulator
     uint8_t f;      // Flags
@@ -35,8 +38,14 @@ typedef struct {
     bool halted;
     bool stepping;
 
-    bool int_master_enabled;
+    bool interrupt_master_enabled;
 } cpu_context;
+
+typedef void (*IN_PROC)(cpu_context *);
 
 void cpu_init();
 bool cpu_step();
+
+IN_PROC inst_get_processor(instruction_type type);
+
+uint16_t cpu_read_register(register_type rt);
