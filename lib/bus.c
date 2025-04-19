@@ -19,12 +19,14 @@
  */
 
 #include "bus.h"
+#include "cart.h"
 
 uint8_t bus_read(uint16_t address) {
     // ROM data
     if (address < 0x8000) {
         return cart_read(address);
     }
+    printf("UNSUPPORTED bus_read(%04x)\n", address);
     NO_IMPL;
 }
 
@@ -34,5 +36,18 @@ void bus_write(uint16_t address, uint8_t value) {
         cart_write(address, value);
         return;
     }
+    printf("UNSUPPORTED bus_write(%04x)\n", address);
     NO_IMPL;
+}
+
+uint16_t bus_read16(uint16_t address) {
+    uint16_t low = bus_read(address);
+    uint16_t high = bus_read(address + 1);
+
+    return low | (high << 8);
+}
+
+void bus_write16(uint16_t address, uint16_t value) {
+    bus_write(address + 1, (value >> 8) & 0xff);
+    bus_write(address, value & 0xff);
 }

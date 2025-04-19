@@ -168,5 +168,6 @@ uint8_t cart_read(uint16_t address) {
 
 void cart_write(uint16_t address, uint8_t value) {
     // For now, just ROM ONLY type support
+    printf("UNSUPPORTED cart_write(%04x)\n", address);
     NO_IMPL;
 }

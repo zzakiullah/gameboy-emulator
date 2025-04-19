@@ -41,12 +41,34 @@ static void proc_none(cpu_context *ctx) {
     exit(-7);
 }
 
-static void proc_nop(cpu_context *ctx) {
-
-}
+static void proc_nop(cpu_context *ctx) {}
 
 static void proc_ld(cpu_context *ctx) {
-    
+    if (ctx->dest_is_mem) {
+        // If 16-bit register
+        if (ctx->current_instruction->register_2 >= RT_AF) {
+            emu_cycles(1);
+            bus_write16(ctx->mem_dest, ctx->fetched_data);
+        }
+        else {
+            bus_write(ctx->mem_dest, ctx->fetched_data);
+        }
+    }
+    else if (ctx->current_instruction->mode == AM_HL_SPR) {
+        uint8_t hflag = (cpu_read_reg(ctx->current_instruction->register_2) & 0xf) + 
+            (ctx->fetched_data & 0xf) >= 0x10;
+
+        // Carry flag
+        uint8_t cflag = (cpu_read_reg(ctx->current_instruction->register_2) & 0xff) + 
+            (ctx->fetched_data & 0xff) >= 0x100;
+
+        cpu_set_flags(ctx, 0, 0, hflag, cflag);
+        cpu_set_reg(ctx->current_instruction->register_1, 
+            cpu_read_reg(ctx->current_instruction->register_2) + (char)ctx->fetched_data);
+    }
+    else {
+        cpu_set_register(ctx->current_instruction->register_1, ctx->fetched_data);
+    }
 }
 
 static void proc_inc(cpu_context *ctx) {

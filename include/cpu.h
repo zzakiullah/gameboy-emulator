@@ -49,3 +49,4 @@ bool cpu_step();
 IN_PROC inst_get_processor(instruction_type type);
 
 uint16_t cpu_read_register(register_type rt);
+void cpu_set_register(register_type rt, uint16_t val);

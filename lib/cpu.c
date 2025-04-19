@@ -25,38 +25,7 @@ static void fetch_instruction() {
     }
 }
 
-static void fetch_data() {
-    ctx.mem_dest = 0;
-    ctx.dest_is_mem = false;
-
-    switch (ctx.current_instruction->mode) {
-        // Addressing mode implied, nothing needs to be read
-        case AM_IMP:
-            return;
-        case AM_R:
-            ctx.fetched_data = cpu_read_register(ctx.current_instruction->register_1);
-            return;
-        case AM_R_D8:
-            ctx.fetched_data = bus_read(ctx.registers.pc);
-            emu_cycles(1);
-            ctx.registers.pc++;
-            return;
-        case AM_D16:
-            uint16_t low = bus_read(ctx.registers.pc);
-            emu_cycles(1);
-
-            uint16_t high = bus_read(ctx.registers.pc + 1);
-            emu_cycles(1);
-
-            ctx.fetched_data = low | (high << 8);
-            ctx.registers.pc += 2;
-            return;
-        default:
-            printf("Unknown addressing mode: %d\n", ctx.current_instruction->mode);
-            exit(-7);
-            return;
-    }
-}
+void fetch_data();
 
 static void execute() {
     printf("Executing instruction: %02x    PC: %04x\n", ctx.current_opcode, ctx.registers.pc);

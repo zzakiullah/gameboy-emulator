@@ -36,3 +36,53 @@ uint16_t cpu_read_register(register_type rt) {
         default:    return 0;
     }
 }
+
+void cpu_set_register(register_type rt, uint16_t val) {
+    switch (rt) {
+        case RT_A:
+            ctx.registers.a = val & 0xff;
+            return;
+        case RT_F:
+            ctx.registers.f = val & 0xff;
+            return;
+        case RT_B:
+            ctx.registers.b = val & 0xff;
+            return;
+        case RT_C:
+            ctx.registers.c = val & 0xff;
+            return;
+        case RT_D:
+            ctx.registers.d = val & 0xff;
+            return;
+        case RT_E:
+            ctx.registers.e = val & 0xff;
+            return;
+        case RT_H:
+            ctx.registers.h = val & 0xff;
+            return;
+        case RT_L:
+            ctx.registers.l = val & 0xff;
+            return;
+        case RT_AF:
+            *((uint16_t *)&ctx.registers.a) = reverse(val);
+            return;
+        case RT_BC:
+            *((uint16_t *)&ctx.registers.b) = reverse(val);
+            return;
+        case RT_DE:
+            *((uint16_t *)&ctx.registers.d) = reverse(val);
+            return;
+        case RT_HL:
+            *((uint16_t *)&ctx.registers.h) = reverse(val); 
+            return;
+        case RT_PC:
+            ctx.registers.pc = val;
+            return;
+        case RT_SP:
+            ctx.registers.sp = val;
+            return;
+        case RT_NONE:
+        default:
+            return;
+    }
+}
