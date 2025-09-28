@@ -202,7 +202,8 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, LD2_Pin|SCREEN_WR_Pin|SCREEN_CD_Pin|SCREEN_CS_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, LD2_Pin|SCREEN_RD_Pin|SCREEN_WR_Pin|SCREEN_CD_Pin
+                          |SCREEN_CS_Pin|SCREEN_RST_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, SCREEN_D0_Pin|SCREEN_D1_Pin|SCREEN_D2_Pin|SCREEN_D3_Pin, GPIO_PIN_RESET);
@@ -216,8 +217,10 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : LD2_Pin SCREEN_WR_Pin SCREEN_CD_Pin SCREEN_CS_Pin */
-  GPIO_InitStruct.Pin = LD2_Pin|SCREEN_WR_Pin|SCREEN_CD_Pin|SCREEN_CS_Pin;
+  /*Configure GPIO pins : LD2_Pin SCREEN_RD_Pin SCREEN_WR_Pin SCREEN_CD_Pin
+                           SCREEN_CS_Pin SCREEN_RST_Pin */
+  GPIO_InitStruct.Pin = LD2_Pin|SCREEN_RD_Pin|SCREEN_WR_Pin|SCREEN_CD_Pin
+                          |SCREEN_CS_Pin|SCREEN_RST_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -236,12 +239,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : SCREEN_RD_Pin */
-  GPIO_InitStruct.Pin = SCREEN_RD_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(SCREEN_RD_GPIO_Port, &GPIO_InitStruct);
 
   /* USER CODE BEGIN MX_GPIO_Init_2 */
 

@@ -89,6 +89,8 @@ void Error_Handler(void);
 #define SCREEN_CD_GPIO_Port GPIOA
 #define SCREEN_CS_Pin GPIO_PIN_11
 #define SCREEN_CS_GPIO_Port GPIOA
+#define SCREEN_RST_Pin GPIO_PIN_12
+#define SCREEN_RST_GPIO_Port GPIOA
 #define TMS_Pin GPIO_PIN_13
 #define TMS_GPIO_Port GPIOA
 #define TCK_Pin GPIO_PIN_14
