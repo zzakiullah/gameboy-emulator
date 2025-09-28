@@ -1,5 +1,5 @@
 /*
- * adafruit_2-8in_tft.c
+ * ILI9341.c
  *
  *  Created on: Sep 28, 2025
  *  Author: Zulaikha Zakiullah
@@ -31,9 +31,9 @@ HAL_StatusTypeDef ILI9341_Reset(void) {
   ILI9341_RD_IDLE;
 
   // Reset pin is active low (connect to GND to reset)
-  HAL_GPIO_WritePin(SCREEN_RST_GPIO_Port, SCREEN_RST_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(ILI9341_RST_GPIO_Port, ILI9341_RST_Pin, GPIO_PIN_RESET);
   HAL_Delay(500);
-  HAL_GPIO_WritePin(SCREEN_RST_GPIO_Port, SCREEN_RST_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(ILI9341_RST_GPIO_Port, ILI9341_RST_Pin, GPIO_PIN_SET);
 
   // Data transfer sync
   ILI9341_CS_ACTIVE;
