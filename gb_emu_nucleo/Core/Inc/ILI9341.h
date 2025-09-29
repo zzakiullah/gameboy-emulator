@@ -11,6 +11,7 @@
 #ifndef INC_ILI9341_H_
 #define INC_ILI9341_H_
 
+#include "main.h"
 #include "stm32f4xx_hal.h"
 
 /**
@@ -67,6 +68,19 @@
 #define ILI9341_MADCTL_BGR 			0x08
 #define ILI9341_MADCTL_MH 			0x04
 
+/**
+ * Colors
+ */
+
+#define	ILI9341_BLACK   0x0000
+#define ILI9341_GREY	0xB5B6
+#define ILI9341_WHITE   0xFFFF
+#define	ILI9341_BLUE    0x001F
+#define	ILI9341_RED     0xF800
+#define	ILI9341_GREEN   0x07E0
+#define ILI9341_CYAN    0x07FF
+#define ILI9341_MAGENTA 0xF81F
+#define ILI9341_YELLOW  0xFFE0
 
 /**
  * Macro functions
@@ -85,44 +99,44 @@
 #define ILI9341_CS_ACTIVE 	HAL_GPIO_WritePin(ILI9341_CS_GPIO_Port, ILI9341_CS_Pin, GPIO_PIN_RESET)
 #define ILI9341_CS_IDLE 	HAL_GPIO_WritePin(ILI9341_CS_GPIO_Port, ILI9341_CS_Pin, GPIO_PIN_SET)
 
+#define ILI9341_RD_STROBE	\
+  {							\
+    ILI9341_RD_ACTIVE;		\
+    ILI9341_RD_IDLE;		\
+  }
+
 #define ILI9341_WR_STROBE	\
   {							\
-    WR_ACTIVE;				\
-    WR_IDLE;				\
+    ILI9341_WR_ACTIVE;		\
+    ILI9341_WR_IDLE;		\
   }
 
 /**
  * Functions
  */
 
-HAL_StatusTypeDef ILI9341_SetDataInput(void);
-HAL_StatusTypeDef ILI9341_SetDataOutput(void);
+void ILI9341_SetDataRead(void);
+void ILI9341_SetDataWrite(void);
 
 void ILI9341_SendReadCommand(void);
 
-HAL_StatusTypeDef ILI9341_Write8(uint8_t value);
+void ILI9341_Write8(uint8_t value);
 uint8_t ILI9341_Read8(void);
-HAL_StatusTypeDef ILI9341_SetWriteDir(void);
-HAL_StatusTypeDef ILI9341_SetReadDir(void);
-HAL_StatusTypeDef ILI9341_SetLR(void);
 
-HAL_StatusTypeDef ILI9341_WriteRegister8(uint8_t address, uint8_t data);
-HAL_StatusTypeDef ILI9341_WriteRegister16(uint8_t address, uint16_t data);
-HAL_StatusTypeDef ILI9341_WriteRegister24(uint8_t address, uint24_t data);
-HAL_StatusTypeDef ILI9341_WriteRegister32(uint8_t address, uint32_t data);
+void ILI9341_WriteRegister8(uint8_t address, uint8_t data);
+void ILI9341_WriteRegister16(uint16_t address, uint16_t data);
+void ILI9341_WriteRegister32(uint8_t address, uint32_t data);
+void ILI9341_WriteRegisterPair(uint8_t addressHigh, uint8_t addressLow, uint16_t data);
+uint32_t ILI9341_ReadRegister(uint8_t reg);
 
-HAL_StatusTypeDef ILI9341_WriteRegisterPair(uint8_t addressHigh, uint8_t addressLow, uint16_t data);
+void ILI9341_SetAddressWindow(int x1, int y1, int x2, int y2);
 
-HAL_StatusTypeDef ILI9341_SetAddressWindow(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1);
-
+HAL_StatusTypeDef ILI9341_ReadID(void);
 HAL_StatusTypeDef ILI9341_Init(void);
-HAL_StatusTypeDef ILI9341_Reset(void);
+void ILI9341_Reset(void);
 
-HAL_StatusTypeDef ILI9341_DrawPixel(int16_t x, int16_t y, uint16_t color);
-HAL_StatusTypeDef ILI9341_Fill(uint16_t color);
-HAL_StatusTypeDef ILI9341_Flood(uint16_t color, uint32_t len);
-
-HAL_StatusTypeDef ILI9341_SetRegisters8(uint8_t *ptr, uint8_t n);
-HAL_StatusTypeDef ILI9341_SetRegisters16(uint8_t *ptr, uint16_t n);
+void ILI9341_DrawPixel(int16_t x, int16_t y, uint16_t color);
+void ILI9341_FillScreen(uint16_t color);
+void ILI9341_Flood(uint16_t color, uint32_t len);
 
 #endif /* INC_ILI9341_H_ */
