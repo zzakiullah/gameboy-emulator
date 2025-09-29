@@ -94,16 +94,6 @@
  * Functions
  */
 
-HAL_StatusTypeDef ILI9341_Init(void);
-HAL_StatusTypeDef ILI9341_Reset(void);
-
-HAL_StatusTypeDef ILI9341_DrawPixel(int16_t x, int16_t y, uint16_t color);
-HAL_StatusTypeDef ILI9341_Fill(uint16_t color);
-HAL_StatusTypeDef ILI9341_Flood(uint16_t color, uint32_t len);
-
-HAL_StatusTypeDef ILI9341_SetRegisters8(uint8_t *ptr, uint8_t n);
-HAL_StatusTypeDef ILI9341_SetRegisters16(uint8_t *ptr, uint16_t n);
-
 HAL_StatusTypeDef ILI9341_Write8(uint8_t value);
 HAL_StatusTypeDef ILI9341_Read8(void);
 HAL_StatusTypeDef ILI9341_SetWriteDir(void);
@@ -116,5 +106,15 @@ HAL_StatusTypeDef ILI9341_WriteRegister24(uint8_t address, uint24_t data);
 HAL_StatusTypeDef ILI9341_WriteRegister32(uint8_t address, uint32_t data);
 
 HAL_StatusTypeDef ILI9341_WriteRegisterPair(uint8_t addressHigh, uint8_t addressLow, uint16_t data);
+
+HAL_StatusTypeDef ILI9341_Init(void);
+HAL_StatusTypeDef ILI9341_Reset(void);
+
+HAL_StatusTypeDef ILI9341_DrawPixel(int16_t x, int16_t y, uint16_t color);
+HAL_StatusTypeDef ILI9341_Fill(uint16_t color);
+HAL_StatusTypeDef ILI9341_Flood(uint16_t color, uint32_t len);
+
+HAL_StatusTypeDef ILI9341_SetRegisters8(uint8_t *ptr, uint8_t n);
+HAL_StatusTypeDef ILI9341_SetRegisters16(uint8_t *ptr, uint16_t n);
 
 #endif /* INC_ILI9341_H_ */

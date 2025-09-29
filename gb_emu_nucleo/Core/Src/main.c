@@ -217,6 +217,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
 
+  /*Configure GPIO pin : TEST_INPUT_Pin */
+  GPIO_InitStruct.Pin = TEST_INPUT_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(TEST_INPUT_GPIO_Port, &GPIO_InitStruct);
+
   /*Configure GPIO pins : LD2_Pin ILI9341_RD_Pin ILI9341_WR_Pin ILI9341_CD_Pin
                            ILI9341_CS_Pin ILI9341_RST_Pin */
   GPIO_InitStruct.Pin = LD2_Pin|ILI9341_RD_Pin|ILI9341_WR_Pin|ILI9341_CD_Pin
