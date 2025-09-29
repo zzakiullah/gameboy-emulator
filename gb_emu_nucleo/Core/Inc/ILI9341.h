@@ -5,6 +5,7 @@
  *  Author: Zulaikha Zakiullah
  *
  *  Driver for Adafruit 2.8" TFT touchscreen (ILI9341)
+ *  Datasheet: https://cdn-shop.adafruit.com/datasheets/ILI9341.pdf
  */
 
 #ifndef INC_ILI9341_H_
@@ -94,8 +95,13 @@
  * Functions
  */
 
+HAL_StatusTypeDef ILI9341_SetDataInput(void);
+HAL_StatusTypeDef ILI9341_SetDataOutput(void);
+
+void ILI9341_SendReadCommand(void);
+
 HAL_StatusTypeDef ILI9341_Write8(uint8_t value);
-HAL_StatusTypeDef ILI9341_Read8(void);
+uint8_t ILI9341_Read8(void);
 HAL_StatusTypeDef ILI9341_SetWriteDir(void);
 HAL_StatusTypeDef ILI9341_SetReadDir(void);
 HAL_StatusTypeDef ILI9341_SetLR(void);
@@ -106,6 +112,8 @@ HAL_StatusTypeDef ILI9341_WriteRegister24(uint8_t address, uint24_t data);
 HAL_StatusTypeDef ILI9341_WriteRegister32(uint8_t address, uint32_t data);
 
 HAL_StatusTypeDef ILI9341_WriteRegisterPair(uint8_t addressHigh, uint8_t addressLow, uint16_t data);
+
+HAL_StatusTypeDef ILI9341_SetAddressWindow(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1);
 
 HAL_StatusTypeDef ILI9341_Init(void);
 HAL_StatusTypeDef ILI9341_Reset(void);
