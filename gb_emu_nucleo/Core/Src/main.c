@@ -18,7 +18,6 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "ILI9341.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -271,11 +270,11 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : TEST_INPUT_Pin */
-  GPIO_InitStruct.Pin = TEST_INPUT_Pin;
+  /*Configure GPIO pins : PB_START_Pin PB_DPAD_UP_Pin */
+  GPIO_InitStruct.Pin = PB_START_Pin|PB_DPAD_UP_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(TEST_INPUT_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pins : LD2_Pin ILI9341_RD_Pin ILI9341_WR_Pin ILI9341_CD_Pin
                            ILI9341_CS_Pin ILI9341_RST_Pin */
@@ -285,6 +284,18 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PB_DPAD_DOWN_Pin PB_DPAD_LEFT_Pin */
+  GPIO_InitStruct.Pin = PB_DPAD_DOWN_Pin|PB_DPAD_LEFT_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PB_DPAD_RIGHT_Pin PB_A_Pin PB_B_Pin PB_SELECT_Pin */
+  GPIO_InitStruct.Pin = PB_DPAD_RIGHT_Pin|PB_A_Pin|PB_B_Pin|PB_SELECT_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /*Configure GPIO pins : ILI9341_D0_Pin ILI9341_D1_Pin ILI9341_D2_Pin ILI9341_D3_Pin */
   GPIO_InitStruct.Pin = ILI9341_D0_Pin|ILI9341_D1_Pin|ILI9341_D2_Pin|ILI9341_D3_Pin;
