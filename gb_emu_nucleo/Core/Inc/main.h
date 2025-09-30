@@ -49,8 +49,6 @@ extern "C" {
 
 /* USER CODE END EM */
 
-void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
-
 /* Exported functions prototypes ---------------------------------------------*/
 void Error_Handler(void);
 
@@ -71,12 +69,14 @@ void Error_Handler(void);
 #define USART_RX_GPIO_Port GPIOA
 #define LD2_Pin GPIO_PIN_5
 #define LD2_GPIO_Port GPIOA
+#define PB_SELECT_Pin GPIO_PIN_6
+#define PB_SELECT_GPIO_Port GPIOA
+#define PB_SELECT_EXTI_IRQn EXTI9_5_IRQn
 #define PB_START_Pin GPIO_PIN_7
 #define PB_START_GPIO_Port GPIOA
 #define PB_START_EXTI_IRQn EXTI9_5_IRQn
 #define PB_DPAD_DOWN_Pin GPIO_PIN_4
 #define PB_DPAD_DOWN_GPIO_Port GPIOC
-#define PB_DPAD_DOWN_EXTI_IRQn EXTI4_IRQn
 #define PB_DPAD_LEFT_Pin GPIO_PIN_5
 #define PB_DPAD_LEFT_GPIO_Port GPIOC
 #define PB_DPAD_LEFT_EXTI_IRQn EXTI9_5_IRQn
@@ -89,9 +89,6 @@ void Error_Handler(void);
 #define PB_B_Pin GPIO_PIN_2
 #define PB_B_GPIO_Port GPIOB
 #define PB_B_EXTI_IRQn EXTI2_IRQn
-#define PB_SELECT_Pin GPIO_PIN_10
-#define PB_SELECT_GPIO_Port GPIOB
-#define PB_SELECT_EXTI_IRQn EXTI15_10_IRQn
 #define ILI9341_D0_Pin GPIO_PIN_12
 #define ILI9341_D0_GPIO_Port GPIOB
 #define ILI9341_D1_Pin GPIO_PIN_13
