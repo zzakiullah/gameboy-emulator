@@ -59,7 +59,6 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define B1_Pin GPIO_PIN_13
 #define B1_GPIO_Port GPIOC
-#define B1_EXTI_IRQn EXTI15_10_IRQn
 #define PB_DPAD_UP_Pin GPIO_PIN_3
 #define PB_DPAD_UP_GPIO_Port GPIOC
 #define PB_DPAD_UP_EXTI_IRQn EXTI3_IRQn
@@ -77,6 +76,7 @@ void Error_Handler(void);
 #define PB_START_EXTI_IRQn EXTI9_5_IRQn
 #define PB_DPAD_DOWN_Pin GPIO_PIN_4
 #define PB_DPAD_DOWN_GPIO_Port GPIOC
+#define PB_DPAD_DOWN_EXTI_IRQn EXTI4_IRQn
 #define PB_DPAD_LEFT_Pin GPIO_PIN_5
 #define PB_DPAD_LEFT_GPIO_Port GPIOC
 #define PB_DPAD_LEFT_EXTI_IRQn EXTI9_5_IRQn
