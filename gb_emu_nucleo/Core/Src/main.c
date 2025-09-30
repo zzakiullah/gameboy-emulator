@@ -22,6 +22,11 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
+#include <stdbool.h>
+
+// Include so we can use extern variables
+#include "stm32f4xx_it.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -45,6 +50,20 @@ TIM_HandleTypeDef htim10;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
+
+// D-Pad buttons
+bool isPressedUp     = false;
+bool isPressedDown   = false;
+bool isPressedLeft   = false;
+bool isPressedRight  = false;
+
+// Start + Select buttons
+bool isPressedStart  = false;
+bool isPressedSelect = false;
+
+// A + B buttons
+bool isPressedA      = false;
+bool isPressedB      = false;
 
 /* USER CODE END PV */
 

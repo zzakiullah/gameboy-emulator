@@ -209,6 +209,13 @@ void EXTI0_IRQHandler(void)
   HAL_GPIO_EXTI_IRQHandler(PB_DPAD_RIGHT_Pin);
   /* USER CODE BEGIN EXTI0_IRQn 1 */
 
+  if (HAL_GPIO_ReadPin(PB_DPAD_RIGHT_GPIO_Port, PB_DPAD_RIGHT_Pin) == GPIO_PIN_SET) {
+    isPressedRight = true;
+  }
+  else {
+    isPressedRight = false;
+  }
+
   /* USER CODE END EXTI0_IRQn 1 */
 }
 
@@ -222,6 +229,13 @@ void EXTI1_IRQHandler(void)
   /* USER CODE END EXTI1_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(PB_A_Pin);
   /* USER CODE BEGIN EXTI1_IRQn 1 */
+
+  if (HAL_GPIO_ReadPin(PB_A_GPIO_Port, PB_A_Pin) == GPIO_PIN_SET) {
+    isPressedA = true;
+  }
+  else {
+    isPressedA = false;
+  }
 
   /* USER CODE END EXTI1_IRQn 1 */
 }
@@ -237,6 +251,13 @@ void EXTI2_IRQHandler(void)
   HAL_GPIO_EXTI_IRQHandler(PB_B_Pin);
   /* USER CODE BEGIN EXTI2_IRQn 1 */
 
+  if (HAL_GPIO_ReadPin(PB_B_GPIO_Port, PB_B_Pin) == GPIO_PIN_SET) {
+    isPressedB = true;
+  }
+  else {
+    isPressedB = false;
+  }
+
   /* USER CODE END EXTI2_IRQn 1 */
 }
 
@@ -251,6 +272,13 @@ void EXTI3_IRQHandler(void)
   HAL_GPIO_EXTI_IRQHandler(PB_DPAD_UP_Pin);
   /* USER CODE BEGIN EXTI3_IRQn 1 */
 
+  if (HAL_GPIO_ReadPin(PB_DPAD_UP_GPIO_Port, PB_DPAD_UP_Pin) == GPIO_PIN_SET) {
+    isPressedUp = true;
+  }
+  else {
+    isPressedUp = false;
+  }
+
   /* USER CODE END EXTI3_IRQn 1 */
 }
 
@@ -264,6 +292,13 @@ void EXTI4_IRQHandler(void)
   /* USER CODE END EXTI4_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(PB_DPAD_DOWN_Pin);
   /* USER CODE BEGIN EXTI4_IRQn 1 */
+
+  if (HAL_GPIO_ReadPin(PB_DPAD_DOWN_GPIO_Port, PB_DPAD_DOWN_Pin) == GPIO_PIN_SET) {
+    isPressedDown = true;
+  }
+  else {
+    isPressedDown = false;
+  }
 
   /* USER CODE END EXTI4_IRQn 1 */
 }
@@ -280,6 +315,27 @@ void EXTI9_5_IRQHandler(void)
   HAL_GPIO_EXTI_IRQHandler(PB_SELECT_Pin);
   HAL_GPIO_EXTI_IRQHandler(PB_START_Pin);
   /* USER CODE BEGIN EXTI9_5_IRQn 1 */
+
+  if (HAL_GPIO_ReadPin(PB_DPAD_LEFT_GPIO_Port, PB_DPAD_LEFT_Pin) == GPIO_PIN_SET) {
+    isPressedLeft = true;
+  }
+  else {
+    isPressedLeft = false;
+  }
+
+  if (HAL_GPIO_ReadPin(PB_START_GPIO_Port, PB_START_Pin) == GPIO_PIN_SET) {
+    isPressedStart = true;
+  }
+  else {
+    isPressedStart = false;
+  }
+
+  if (HAL_GPIO_ReadPin(PB_SELECT_GPIO_Port, PB_SELECT_Pin) == GPIO_PIN_SET) {
+    isPressedSelect = true;
+  }
+  else {
+    isPressedSelect = false;
+  }
 
   /* USER CODE END EXTI9_5_IRQn 1 */
 }

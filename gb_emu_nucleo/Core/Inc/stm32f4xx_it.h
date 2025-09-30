@@ -28,10 +28,26 @@ extern "C" {
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
+#include <stdbool.h>
+
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
+
+// D-Pad buttons
+extern bool isPressedUp;
+extern bool isPressedDown;
+extern bool isPressedLeft;
+extern bool isPressedRight;
+
+// Start + Select buttons
+extern bool isPressedStart;
+extern bool isPressedSelect;
+
+// A + B buttons
+extern bool isPressedA;
+extern bool isPressedB;
 
 /* USER CODE END ET */
 
